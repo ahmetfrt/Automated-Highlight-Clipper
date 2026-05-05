@@ -1,0 +1,13 @@
+paths:
+  data_dir: data
+  raw_data_dir: data/raw
+  interim_data_dir: data/interim
+  processed_data_dir: data/processed
+  external_data_dir: data/external
+  model_dir: models
+  output_dir: outputs
+  prediction_dir: outputs/predictions
+  metric_dir: outputs/metrics
+  figure_dir: outputs/figures
+  table_dir: outputs/tables
+  user_study_dir: outputs/user_study

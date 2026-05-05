@@ -1,0 +1,76 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Datasets and generated data
+data/raw/**
+data/interim/**
+data/processed/**
+data/external/**
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Videos, audio, and media dumps
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+
+# Model checkpoints and large model files
+models/**
+!models/README.md
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.h5
+*.pkl
+*.joblib
+
+# Generated outputs
+outputs/predictions/**
+outputs/metrics/**
+outputs/figures/**
+outputs/tables/**
+outputs/user_study/**
+report/figures/**
+presentation/assets/**
+!outputs/predictions/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/figures/.gitkeep
+!outputs/tables/.gitkeep
+!outputs/user_study/.gitkeep
+!report/figures/.gitkeep
+!presentation/assets/.gitkeep
+
+# Logs and temporary files
+*.log
+tmp/
+temp/

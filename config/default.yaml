@@ -1,0 +1,21 @@
+project:
+  name: automated-highlight-clipper
+  random_seed: 466
+
+video:
+  frame_sample_rate: 1
+
+audio:
+  audio_chunk_seconds: 30
+
+windows:
+  window_seconds: 60
+  window_stride_seconds: 30
+
+ranking:
+  top_k: 5
+
+fusion:
+  visual_weight: 0.34
+  audio_weight: 0.33
+  text_weight: 0.33

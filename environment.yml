@@ -1,0 +1,24 @@
+name: automated-highlight-clipper
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pyyaml
+  - tqdm
+  - pytorch
+  - torchvision
+  - opencv
+  - librosa
+  - soundfile
+  - jupyter
+  - ipykernel
+  - pip:
+      - openai-whisper

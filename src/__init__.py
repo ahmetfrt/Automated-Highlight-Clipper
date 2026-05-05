@@ -1,0 +1,1 @@
+"""Automated Highlight Clipper package."""
