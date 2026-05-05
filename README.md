@@ -2,7 +2,7 @@
 
 The Automated Highlight Clipper is a CS 466 Introduction to Deep Learning term project for building a multimodal highlight-detection pipeline. Given a long VOD or video, the planned system will score candidate windows and output ranked 60-second highlight segments.
 
-This first version of the repository is intentionally lightweight. It defines a stable project structure, configuration files, documentation placeholders, and Python module boundaries without implementing heavy model training or video/audio processing yet.
+The repository now includes the FER2013 facial emotion preparation and CNN training pipeline. The selected visual emotion model is documented for later use in the video visual pipeline, while video, audio, text, fusion, and highlight evaluation remain future milestones.
 
 ## Planned Pipeline
 
@@ -92,6 +92,27 @@ python scripts/02_train_fer_model.py --model improved --epochs 30 --batch-size 1
 
 The training script saves checkpoints to `models/checkpoints/`, metrics and comparison CSV files to `outputs/metrics/`, and training curves plus confusion matrices to `outputs/figures/`. Use `--output-dir` to redirect metrics and figures, or `--models-dir` to redirect checkpoints.
 
+## Current FER2013 Selection
+
+The current selected visual emotion model is the **improved CNN** trained on FER2013. Validation macro F1 was not available in the saved artifacts, so the selection rule used test macro F1. The improved CNN test macro F1 was `0.5891470970491275`, compared with the baseline CNN test macro F1 of `0.4895215502192262`.
+
+Selected local checkpoint:
+
+```text
+models/checkpoints/fer2013_improved_cnn.pt
+```
+
+Relevant local artifacts:
+
+```text
+outputs/metrics/fer2013_improved_cnn_metrics.json
+outputs/metrics/fer2013_improved_cnn_history.csv
+outputs/figures/fer2013_improved_cnn_training_curves.png
+outputs/figures/fer2013_improved_cnn_confusion_matrix.png
+```
+
+These generated artifacts are local and ignored by git. Do not commit datasets, processed arrays, checkpoints, model files, metrics, or figures unless a specific artifact is intentionally selected later for the final report or presentation.
+
 ## Current Status
 
-The repository currently implements the FER2013 preparation and facial emotion CNN training pipeline. The video, audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.
+The repository currently implements and documents the FER2013 preparation, training, evaluation-summary, and visual-model selection steps. The next implementation phase is to use the selected FER2013 model in the video visual pipeline. The audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.

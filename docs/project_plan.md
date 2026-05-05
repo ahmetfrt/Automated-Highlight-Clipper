@@ -2,15 +2,18 @@
 
 ## Milestone 1: Repository and Baselines
 
-- Create a stable repository structure.
-- Define configuration files and data paths.
-- Add placeholder scripts and modules for each pipeline stage.
+- Status: completed.
+- Created a stable repository structure.
+- Defined configuration files and data paths.
+- Added placeholder scripts and modules for each pipeline stage.
 - Implement simple keyword and metadata baselines before adding heavy models.
 
 ## Milestone 2: Visual Pipeline
 
-- Explore FER2013.
-- Train a custom CNN for facial emotion recognition.
+- Status: in progress.
+- FER2013 preparation and CNN training are complete for the baseline and improved CNN runs.
+- The current selected FER2013 visual emotion model is the improved CNN checkpoint at `models/checkpoints/fer2013_improved_cnn.pt`.
+- Selection was based on saved test macro F1 because validation macro F1 was not available: improved CNN `0.5891470970491275` vs. baseline CNN `0.4895215502192262`.
 - Export visual emotion predictions for sampled video frames.
 - Convert frame-level predictions into visual excitement features.
 
@@ -41,3 +44,7 @@
 - Prepare presentation materials.
 - Document AI tool usage.
 - Archive reproducible experiment settings and results.
+
+## Artifact Policy
+
+Generated datasets, processed arrays, checkpoints, model files, output metrics, and output figures are local artifacts and should not be committed unless a specific artifact is intentionally selected later for the final report or presentation.
