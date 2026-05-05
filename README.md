@@ -113,6 +113,30 @@ outputs/figures/fer2013_improved_cnn_confusion_matrix.png
 
 These generated artifacts are local and ignored by git. Do not commit datasets, processed arrays, checkpoints, model files, metrics, or figures unless a specific artifact is intentionally selected later for the final report or presentation.
 
+## VOD Metadata and Human Annotations
+
+Selected VODs and human highlight labels are tracked with small CSV files under:
+
+```text
+data/processed/annotations/
+```
+
+Use these templates to create local project files:
+
+```text
+data/processed/annotations/video_registry_template.csv
+data/processed/annotations/human_highlights_template.csv
+```
+
+The actual local files expected by the loaders are:
+
+```text
+data/processed/annotations/video_registry.csv
+data/processed/annotations/human_highlights.csv
+```
+
+`video_registry.csv` records selected videos with `video_id`, title, source URL, platform, duration, genre, and flags for chat/visible face availability. `human_highlights.csv` records human-labeled highlight intervals with timestamps, seconds, annotator, reason, and confidence. Real VOD metadata and annotation files remain local artifacts and should not be committed by default.
+
 ## Current Status
 
-The repository currently implements and documents the FER2013 preparation, training, evaluation-summary, and visual-model selection steps. The next implementation phase is to use the selected FER2013 model in the video visual pipeline. The audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.
+The repository currently implements and documents the FER2013 preparation, training, evaluation-summary, visual-model selection, VOD registry, and human annotation utilities. The next implementation phase is to use the selected FER2013 model in the video visual pipeline. The audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.

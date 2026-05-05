@@ -1,9 +1,18 @@
-"""Timestamp and window helper utilities."""
+"""Compatibility wrappers for timestamp and interval helper utilities."""
+
+from src.utils.time_utils import hhmmss_to_seconds, seconds_to_hhmmss, temporal_iou, temporal_overlap
 
 
-def seconds_to_timestamp() -> None:
-    """Placeholder for timestamp formatting.
+def seconds_to_timestamp(seconds: int | float) -> str:
+    """Convert seconds into a zero-padded ``HH:MM:SS`` timestamp."""
 
-    TODO: Convert numeric seconds into human-readable timestamp strings.
-    """
-    raise NotImplementedError("Timestamp helpers are not implemented yet.")
+    return seconds_to_hhmmss(seconds)
+
+
+__all__ = [
+    "hhmmss_to_seconds",
+    "seconds_to_hhmmss",
+    "seconds_to_timestamp",
+    "temporal_iou",
+    "temporal_overlap",
+]

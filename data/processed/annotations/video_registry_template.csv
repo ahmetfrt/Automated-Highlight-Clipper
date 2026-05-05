@@ -1,0 +1,2 @@
+video_id,title,source_url,platform,duration_seconds,genre,has_chat,has_visible_face,notes
+example_vod_001,Example VOD Title,https://example.com/example-vod,example_platform,3600,gaming,true,true,Tiny template row; replace with selected project VOD metadata.

@@ -14,6 +14,7 @@
 - FER2013 preparation and CNN training are complete for the baseline and improved CNN runs.
 - The current selected FER2013 visual emotion model is the improved CNN checkpoint at `models/checkpoints/fer2013_improved_cnn.pt`.
 - Selection was based on saved test macro F1 because validation macro F1 was not available: improved CNN `0.5891470970491275` vs. baseline CNN `0.4895215502192262`.
+- VOD metadata and human highlight annotation utilities are now in place. Selected VODs should be recorded in `data/processed/annotations/video_registry.csv`, and human highlight labels should be recorded in `data/processed/annotations/human_highlights.csv`.
 - Export visual emotion predictions for sampled video frames.
 - Convert frame-level predictions into visual excitement features.
 

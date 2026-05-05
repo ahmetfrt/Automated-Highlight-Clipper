@@ -30,6 +30,8 @@ data/external/**
 !data/raw/.gitkeep
 !data/interim/.gitkeep
 !data/processed/.gitkeep
+!data/processed/annotations/
+!data/processed/annotations/*_template.csv
 !data/external/.gitkeep
 
 # Videos, audio, and media dumps
