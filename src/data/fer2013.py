@@ -1,10 +1,24 @@
-"""Utilities for preparing the FER2013 dataset."""
+"""Compatibility wrappers for FER2013 preparation utilities."""
+
+from src.data.fer2013_loader import (
+    EMOTION_LABELS,
+    FER2013TorchDataset,
+    create_synthetic_fer2013,
+    create_data_loaders,
+    load_metadata,
+    load_prepared_split,
+    prepare_fer2013,
+    validate_fer2013_raw,
+)
 
 
-def prepare_fer2013() -> None:
-    """Placeholder for FER2013 preprocessing.
-
-    TODO: Load FER2013 metadata, validate files, split data, and export tensors
-    or image folders for training.
-    """
-    raise NotImplementedError("FER2013 preparation is not implemented yet.")
+__all__ = [
+    "EMOTION_LABELS",
+    "FER2013TorchDataset",
+    "create_synthetic_fer2013",
+    "create_data_loaders",
+    "load_metadata",
+    "load_prepared_split",
+    "prepare_fer2013",
+    "validate_fer2013_raw",
+]

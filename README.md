@@ -60,6 +60,38 @@ conda activate automated-highlight-clipper
 
 Copy `.env.example` to `.env` before adding local paths or optional API keys. Do not commit `.env`, datasets, videos, audio files, model checkpoints, or generated outputs.
 
+## FER2013 Training
+
+Place FER2013 under `data/raw/fer2013/`. The preparation script supports the common Kaggle `fer2013.csv` file with `emotion`, `pixels`, and optional `Usage` columns, or image folders such as `train/<class_name>/...` and `test/<class_name>/...`. Real datasets stay local and are ignored by git.
+
+Run a quick synthetic smoke test without downloading FER2013:
+
+```bash
+python scripts/02_train_fer_model.py --smoke-test --model all
+```
+
+Smoke-test metrics are only for checking that the pipeline runs; they are not FER2013 results.
+
+Prepare normalized 48x48 grayscale splits:
+
+```bash
+python scripts/01_prepare_fer2013.py --dataset-path data/raw/fer2013
+```
+
+Train the baseline CNN:
+
+```bash
+python scripts/02_train_fer_model.py --model baseline --epochs 30 --batch-size 128
+```
+
+Train the improved CNN with augmentation, batch normalization, dropout, and early stopping:
+
+```bash
+python scripts/02_train_fer_model.py --model improved --epochs 30 --batch-size 128
+```
+
+The training script saves checkpoints to `models/checkpoints/`, metrics and comparison CSV files to `outputs/metrics/`, and training curves plus confusion matrices to `outputs/figures/`. Use `--output-dir` to redirect metrics and figures, or `--models-dir` to redirect checkpoints.
+
 ## Current Status
 
-The repository currently contains only scaffolding and TODO placeholders. The next step is to add small, testable implementations for data preparation, baseline scoring, window synchronization, and evaluation utilities before training larger models.
+The repository currently implements the FER2013 preparation and facial emotion CNN training pipeline. The video, audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.

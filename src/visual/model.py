@@ -1,11 +1,24 @@
-"""Custom CNN model definitions for facial emotion recognition."""
+"""Compatibility wrappers for FER2013 emotion model definitions."""
+
+from src.visual.emotion_model import (
+    BaselineEmotionCNN,
+    ImprovedEmotionCNN,
+    build_model,
+    count_parameters,
+    save_checkpoint,
+    set_seed,
+)
 
 
-class EmotionCNN:
-    """Placeholder custom CNN model.
+EmotionCNN = ImprovedEmotionCNN
 
-    TODO: Implement the CNN architecture for FER2013 emotion classification.
-    """
 
-    def __init__(self) -> None:
-        raise NotImplementedError("EmotionCNN is not implemented yet.")
+__all__ = [
+    "BaselineEmotionCNN",
+    "EmotionCNN",
+    "ImprovedEmotionCNN",
+    "build_model",
+    "count_parameters",
+    "save_checkpoint",
+    "set_seed",
+]

@@ -6,6 +6,7 @@ matplotlib>=3.8
 seaborn>=0.13
 PyYAML>=6.0
 tqdm>=4.66
+Pillow>=10.0
 
 # Deep learning and computer vision
 torch>=2.2
@@ -21,3 +22,6 @@ nltk>=3.8
 # Notebook support
 jupyter>=1.0
 ipykernel>=6.29
+
+# Tests
+pytest>=8.0

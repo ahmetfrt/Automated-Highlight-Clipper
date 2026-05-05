@@ -4,6 +4,8 @@
 !.env.example
 venv/
 .venv/
+*.venv/
+ahc.venv/
 env/
 ENV/
 __pycache__/
@@ -43,6 +45,7 @@ data/external/**
 *.ogg
 
 # Model checkpoints and large model files
+models/checkpoints/**
 models/**
 !models/README.md
 *.pt
@@ -50,11 +53,19 @@ models/**
 *.ckpt
 *.onnx
 *.safetensors
+*.keras
 *.h5
 *.pkl
 *.joblib
 
 # Generated outputs
+outputs/**
+!outputs/README.md
+!outputs/predictions/
+!outputs/metrics/
+!outputs/figures/
+!outputs/tables/
+!outputs/user_study/
 outputs/predictions/**
 outputs/metrics/**
 outputs/figures/**
@@ -73,4 +84,6 @@ presentation/assets/**
 # Logs and temporary files
 *.log
 tmp/
+tmp*/
 temp/
+pytest-of-*/

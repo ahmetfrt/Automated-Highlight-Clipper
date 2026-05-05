@@ -13,6 +13,7 @@ dependencies:
   - seaborn
   - pyyaml
   - tqdm
+  - pillow
   - pytorch
   - torchvision
   - opencv
@@ -20,5 +21,6 @@ dependencies:
   - soundfile
   - jupyter
   - ipykernel
+  - pytest
   - pip:
       - openai-whisper
