@@ -134,6 +134,61 @@ processed arrays, checkpoints, model files, metrics, or figures unless a
 specific artifact is intentionally selected later for the final report or
 presentation.
 
+## Visual Video Pipeline
+
+The visual pipeline uses the selected FER2013 improved CNN checkpoint to score
+sampled VOD frames. Place local videos under:
+
+```text
+data/raw/videos/
+```
+
+Use the registered `video_id` as the filename stem, such as
+`data/raw/videos/vod_001.mp4`, or pass an explicit path with `--video-path`.
+The video should also be listed in
+`data/processed/annotations/video_registry.csv` when the registry file exists.
+
+Extract frames only:
+
+```bash
+python scripts/03_extract_video_assets.py --video-id vod_001
+```
+
+Run the full visual-only pipeline:
+
+```bash
+python scripts/04_run_visual_pipeline.py --video-id vod_001
+```
+
+For a quick local check without a large VOD:
+
+```bash
+python scripts/03_extract_video_assets.py --smoke-test
+python scripts/04_run_visual_pipeline.py --smoke-test
+```
+
+The pipeline samples frames at the configured rate in `config/default.yaml`
+(`video.frame_sample_rate`, currently 1 FPS), detects the largest face in each
+frame with OpenCV Haar cascades, preprocesses the crop as a 48x48 grayscale
+FER2013 input, and writes visual emotion probabilities for:
+
+```text
+angry, disgust, fear, happy, sad, surprise, neutral
+```
+
+Generated local artifacts:
+
+```text
+data/interim/frames/<video_id>/frames_manifest.csv
+data/interim/frames/<video_id>/*.jpg
+data/interim/faces/<video_id>/*.jpg
+data/processed/window_features/<video_id>_visual_frame_predictions.csv
+data/processed/window_features/<video_id>_visual_window_scores.csv
+```
+
+Frames, face crops, window features, videos, datasets, outputs, and checkpoints
+are local artifacts and are ignored by git. Do not commit them by default.
+
 ## VOD Metadata and Human Annotations
 
 Selected VODs and human highlight labels are tracked with small CSV files under:
@@ -166,6 +221,7 @@ annotation files remain local artifacts and should not be committed by default.
 
 The repository currently implements and documents the FER2013 preparation,
 training, evaluation-summary, visual-model selection, VOD registry, and human
-annotation utilities. The next implementation phase is to use the selected
-FER2013 model in the video visual pipeline. The audio, text, fusion, and
-highlight-evaluation pipelines remain placeholders for later project milestones.
+annotation utilities, plus the first visual-only video pipeline for frame
+sampling, face detection, FER2013 emotion inference, and visual window scoring.
+The audio, text, fusion, and highlight-evaluation pipelines remain placeholders
+for later project milestones.
