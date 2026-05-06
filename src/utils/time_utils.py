@@ -23,7 +23,9 @@ def hhmmss_to_seconds(timestamp: str) -> int:
         minutes_int = int(minutes)
         seconds_int = int(seconds)
     except ValueError as error:
-        raise ValueError(f"Timestamp contains non-integer fields: {timestamp!r}") from error
+        raise ValueError(
+            f"Timestamp contains non-integer fields: {timestamp!r}"
+        ) from error
 
     if hours_int < 0 or minutes_int < 0 or seconds_int < 0:
         raise ValueError(f"Timestamp fields must be non-negative: {timestamp!r}")
@@ -77,4 +79,7 @@ def _validate_interval(start: int | float, end: int | float) -> None:
     if start < 0 or end < 0:
         raise ValueError("Interval boundaries must be non-negative.")
     if end < start:
-        raise ValueError(f"Interval end must be greater than or equal to start: {start}, {end}")
+        raise ValueError(
+            "Interval end must be greater than or equal to start: "
+            f"{start}, {end}"
+        )

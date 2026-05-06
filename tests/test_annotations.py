@@ -53,7 +53,10 @@ def test_video_registry_validation_normalizes_types() -> None:
 
 def test_annotation_validation_accepts_valid_rows() -> None:
     registry = validate_video_registry(_valid_registry())
-    annotations = validate_human_highlights(_valid_annotations(), video_registry=registry)
+    annotations = validate_human_highlights(
+        _valid_annotations(),
+        video_registry=registry,
+    )
 
     assert annotations.loc[0, "start_seconds"] == 60
     assert annotations.loc[0, "end_seconds"] == 120

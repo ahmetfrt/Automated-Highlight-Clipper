@@ -1,8 +1,14 @@
 # The Automated Highlight Clipper
 
-The Automated Highlight Clipper is a CS 466 Introduction to Deep Learning term project for building a multimodal highlight-detection pipeline. Given a long VOD or video, the planned system will score candidate windows and output ranked 60-second highlight segments.
+The Automated Highlight Clipper is a CS 466 Introduction to Deep Learning term
+project for building a multimodal highlight-detection pipeline. Given a long VOD
+or video, the planned system will score candidate windows and output ranked
+60-second highlight segments.
 
-The repository now includes the FER2013 facial emotion preparation and CNN training pipeline. The selected visual emotion model is documented for later use in the video visual pipeline, while video, audio, text, fusion, and highlight evaluation remain future milestones.
+The repository now includes the FER2013 facial emotion preparation and CNN
+training pipeline. The selected visual emotion model is documented for later use
+in the video visual pipeline, while video, audio, text, fusion, and highlight
+evaluation remain future milestones.
 
 ## Planned Pipeline
 
@@ -58,11 +64,16 @@ conda env create -f environment.yml
 conda activate automated-highlight-clipper
 ```
 
-Copy `.env.example` to `.env` before adding local paths or optional API keys. Do not commit `.env`, datasets, videos, audio files, model checkpoints, or generated outputs.
+Copy `.env.example` to `.env` before adding local paths or optional API keys.
+Do not commit `.env`, datasets, videos, audio files, model checkpoints, or
+generated outputs.
 
 ## FER2013 Training
 
-Place FER2013 under `data/raw/fer2013/`. The preparation script supports the common Kaggle `fer2013.csv` file with `emotion`, `pixels`, and optional `Usage` columns, or image folders such as `train/<class_name>/...` and `test/<class_name>/...`. Real datasets stay local and are ignored by git.
+Place FER2013 under `data/raw/fer2013/`. The preparation script supports the
+common Kaggle `fer2013.csv` file with `emotion`, `pixels`, and optional `Usage`
+columns, or image folders such as `train/<class_name>/...` and
+`test/<class_name>/...`. Real datasets stay local and are ignored by git.
 
 Run a quick synthetic smoke test without downloading FER2013:
 
@@ -90,11 +101,18 @@ Train the improved CNN with augmentation, batch normalization, dropout, and earl
 python scripts/02_train_fer_model.py --model improved --epochs 30 --batch-size 128
 ```
 
-The training script saves checkpoints to `models/checkpoints/`, metrics and comparison CSV files to `outputs/metrics/`, and training curves plus confusion matrices to `outputs/figures/`. Use `--output-dir` to redirect metrics and figures, or `--models-dir` to redirect checkpoints.
+The training script saves checkpoints to `models/checkpoints/`, metrics and
+comparison CSV files to `outputs/metrics/`, and training curves plus confusion
+matrices to `outputs/figures/`. Use `--output-dir` to redirect metrics and
+figures, or `--models-dir` to redirect checkpoints.
 
 ## Current FER2013 Selection
 
-The current selected visual emotion model is the **improved CNN** trained on FER2013. Validation macro F1 was not available in the saved artifacts, so the selection rule used test macro F1. The improved CNN test macro F1 was `0.5891470970491275`, compared with the baseline CNN test macro F1 of `0.4895215502192262`.
+The current selected visual emotion model is the **improved CNN** trained on
+FER2013. Validation macro F1 was not available in the saved artifacts, so the
+selection rule used test macro F1. The improved CNN test macro F1 was
+`0.5891470970491275`, compared with the baseline CNN test macro F1 of
+`0.4895215502192262`.
 
 Selected local checkpoint:
 
@@ -111,7 +129,10 @@ outputs/figures/fer2013_improved_cnn_training_curves.png
 outputs/figures/fer2013_improved_cnn_confusion_matrix.png
 ```
 
-These generated artifacts are local and ignored by git. Do not commit datasets, processed arrays, checkpoints, model files, metrics, or figures unless a specific artifact is intentionally selected later for the final report or presentation.
+These generated artifacts are local and ignored by git. Do not commit datasets,
+processed arrays, checkpoints, model files, metrics, or figures unless a
+specific artifact is intentionally selected later for the final report or
+presentation.
 
 ## VOD Metadata and Human Annotations
 
@@ -135,8 +156,16 @@ data/processed/annotations/video_registry.csv
 data/processed/annotations/human_highlights.csv
 ```
 
-`video_registry.csv` records selected videos with `video_id`, title, source URL, platform, duration, genre, and flags for chat/visible face availability. `human_highlights.csv` records human-labeled highlight intervals with timestamps, seconds, annotator, reason, and confidence. Real VOD metadata and annotation files remain local artifacts and should not be committed by default.
+`video_registry.csv` records selected videos with `video_id`, title, source URL,
+platform, duration, genre, and flags for chat/visible face availability.
+`human_highlights.csv` records human-labeled highlight intervals with
+timestamps, seconds, annotator, reason, and confidence. Real VOD metadata and
+annotation files remain local artifacts and should not be committed by default.
 
 ## Current Status
 
-The repository currently implements and documents the FER2013 preparation, training, evaluation-summary, visual-model selection, VOD registry, and human annotation utilities. The next implementation phase is to use the selected FER2013 model in the video visual pipeline. The audio, text, fusion, and highlight-evaluation pipelines remain placeholders for later project milestones.
+The repository currently implements and documents the FER2013 preparation,
+training, evaluation-summary, visual-model selection, VOD registry, and human
+annotation utilities. The next implementation phase is to use the selected
+FER2013 model in the video visual pipeline. The audio, text, fusion, and
+highlight-evaluation pipelines remain placeholders for later project milestones.

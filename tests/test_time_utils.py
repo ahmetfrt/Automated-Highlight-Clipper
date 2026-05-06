@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import pytest
 
-from src.utils.time_utils import hhmmss_to_seconds, seconds_to_hhmmss, temporal_iou, temporal_overlap
+from src.utils.time_utils import (
+    hhmmss_to_seconds,
+    seconds_to_hhmmss,
+    temporal_iou,
+    temporal_overlap,
+)
 
 
 def test_hhmmss_to_seconds() -> None:

@@ -56,7 +56,9 @@ def load_video_registry(path: str | Path = VIDEO_REGISTRY_PATH) -> pd.DataFrame:
 def validate_video_registry(registry: pd.DataFrame) -> pd.DataFrame:
     """Validate and normalize a video registry DataFrame."""
 
-    missing_columns = [column for column in REQUIRED_VIDEO_REGISTRY_COLUMNS if column not in registry]
+    missing_columns = [
+        column for column in REQUIRED_VIDEO_REGISTRY_COLUMNS if column not in registry
+    ]
     if missing_columns:
         raise ValueError(f"Video registry missing required columns: {missing_columns}")
 
@@ -64,8 +66,12 @@ def validate_video_registry(registry: pd.DataFrame) -> pd.DataFrame:
     _require_non_empty(normalized, ["video_id", "title", "platform"])
 
     if normalized["video_id"].duplicated().any():
-        duplicates = sorted(normalized.loc[normalized["video_id"].duplicated(), "video_id"].unique())
-        raise ValueError(f"Video registry contains duplicate video_id values: {duplicates}")
+        duplicates = sorted(
+            normalized.loc[normalized["video_id"].duplicated(), "video_id"].unique()
+        )
+        raise ValueError(
+            f"Video registry contains duplicate video_id values: {duplicates}"
+        )
 
     normalized["duration_seconds"] = pd.to_numeric(
         normalized["duration_seconds"],
@@ -94,7 +100,8 @@ def _row_to_dict(row: pd.Series) -> dict[str, Any]:
 
 def _require_non_empty(frame: pd.DataFrame, columns: list[str]) -> None:
     for column in columns:
-        if frame[column].isna().any() or (frame[column].astype(str).str.strip() == "").any():
+        is_empty = frame[column].astype(str).str.strip() == ""
+        if frame[column].isna().any() or is_empty.any():
             raise ValueError(f"{column} must be present and non-empty for every video.")
 
 
